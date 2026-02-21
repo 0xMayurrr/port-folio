@@ -1,49 +1,44 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState } from "react";
 
-const navItems = ["About", "Skills", "Projects", "Experience", "Contact"];
+const tabs = [
+  { label: "_hello", id: "hello" },
+  { label: "_about-me", id: "about" },
+  { label: "_projects", id: "projects" },
+  { label: "_contact-me", id: "contact" },
+];
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const [activeTab, setActiveTab] = useState("hello");
 
-  useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handler);
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
+  const handleClick = (id: string) => {
+    setActiveTab(id);
+    const el = document.getElementById(id);
+    el?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <motion.nav
-      initial={{ y: -80 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass py-3" : "py-5"
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="text-lg font-bold text-gradient">
-          VC
-        </a>
-        <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background">
+      <div className="flex items-center">
+        <div className="px-6 py-3 border-r border-border text-muted-foreground text-sm">
+          vibecoder
+        </div>
+        <div className="flex">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => handleClick(tab.id)}
+              className={`px-6 py-3 text-sm border-r border-border transition-colors ${
+                activeTab === tab.id
+                  ? "bg-tab-active text-foreground"
+                  : "bg-tab-inactive text-muted-foreground hover:text-foreground"
+              }`}
             >
-              {item}
-            </a>
+              {tab.label}
+            </button>
           ))}
         </div>
-        <a
-          href="#contact"
-          className="text-sm px-4 py-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors duration-200"
-        >
-          Let's Talk
-        </a>
       </div>
-    </motion.nav>
+    </nav>
   );
 };
 
