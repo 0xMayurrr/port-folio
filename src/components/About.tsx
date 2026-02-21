@@ -1,55 +1,85 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+
+const personalInfo = [
+  { key: "name", value: '"VibeCoder"' },
+  { key: "role", value: '"Blockchain Dev & AI Builder"' },
+  { key: "location", value: '"Remote / Worldwide"' },
+  { key: "experience", value: '"3+ years"' },
+  { key: "openToWork", value: "true" },
+];
+
+const interests = [
+  "Blockchain", "AI/ML", "Open Source", "Hackathons",
+  "Web3", "DeFi", "IoT", "System Design"
+];
 
 const About = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-28 px-6">
-      <div ref={ref} className="max-w-6xl mx-auto">
+    <section id="about" className="py-24 px-6">
+      <div ref={ref} className="max-w-5xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="grid md:grid-cols-2 gap-12 items-center"
+          transition={{ duration: 0.5 }}
+          className="grid md:grid-cols-2 gap-10"
         >
-          {/* Avatar */}
-          <div className="flex justify-center">
-            <div className="relative">
-              <div className="w-64 h-64 md:w-72 md:h-72 rounded-2xl glass flex items-center justify-center overflow-hidden">
-                <div className="text-8xl">🧑‍💻</div>
-              </div>
-              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 blur-xl -z-10" />
-            </div>
+          {/* Personal info as code block */}
+          <div className="rounded-lg border border-border bg-card p-6">
+            <p className="text-comment text-xs mb-4">
+              /**<br />
+              &nbsp;* About me<br />
+              &nbsp;* I'm a passionate full-stack developer with deep<br />
+              &nbsp;* expertise in blockchain and AI.<br />
+              &nbsp;*/
+            </p>
+            <p className="text-sm mb-2">
+              <span className="text-keyword">const </span>
+              <span className="text-variable">aboutMe</span>
+              <span className="text-foreground"> = {"{"}</span>
+            </p>
+            {personalInfo.map((item) => (
+              <p key={item.key} className="text-sm pl-6">
+                <span className="text-function">{item.key}</span>
+                <span className="text-foreground">: </span>
+                <span className={item.value.startsWith('"') ? "text-string" : "text-keyword"}>
+                  {item.value}
+                </span>
+                <span className="text-foreground">,</span>
+              </p>
+            ))}
+            <p className="text-sm text-foreground">{"}"}</p>
           </div>
 
-          {/* Bio */}
-          <div>
-            <p className="text-sm tracking-[0.2em] uppercase text-primary mb-4">About Me</p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Building the future,{" "}
-              <span className="text-gradient">one line at a time</span>
-            </h2>
-            <p className="text-muted-foreground leading-relaxed mb-6 font-light">
-              I'm a passionate full-stack developer with deep expertise in blockchain technology, 
-              artificial intelligence, and modern web development. I thrive on building products 
-              that push boundaries and create real-world impact.
+          {/* Interests */}
+          <div className="rounded-lg border border-border bg-card p-6">
+            <p className="text-comment text-xs mb-4">// My interests</p>
+            <p className="text-sm mb-3">
+              <span className="text-keyword">const </span>
+              <span className="text-variable">interests</span>
+              <span className="text-foreground"> = [</span>
             </p>
-            <p className="text-muted-foreground leading-relaxed mb-8 font-light">
-              With experience across hackathons, startups, and open-source projects, I bring 
-              a unique blend of technical depth and creative problem-solving to every project I touch.
-            </p>
-
-            <div className="flex flex-wrap gap-3">
-              {["🏆 Hackathon Winner", "🚀 10+ Projects", "🌍 Open Source Contributor"].map((badge) => (
+            <div className="flex flex-wrap gap-2 pl-6 mb-3">
+              {interests.map((interest) => (
                 <span
-                  key={badge}
-                  className="px-4 py-2 text-sm rounded-lg glass text-foreground"
+                  key={interest}
+                  className="px-3 py-1 text-xs rounded border border-border text-string bg-secondary"
                 >
-                  {badge}
+                  "{interest}"
                 </span>
+              ))}
+            </div>
+            <p className="text-sm text-foreground">]</p>
+
+            <div className="mt-6 pt-4 border-t border-border">
+              <p className="text-comment text-xs mb-3">// Achievements</p>
+              {["🏆 Hackathon Winner", "🚀 10+ Projects", "🌍 Open Source Contributor"].map((badge) => (
+                <p key={badge} className="text-sm text-muted-foreground mb-1">
+                  <span className="text-comment">// </span>{badge}
+                </p>
               ))}
             </div>
           </div>

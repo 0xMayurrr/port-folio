@@ -1,12 +1,21 @@
+import { Github, Linkedin, Twitter } from "lucide-react";
+
 const Footer = () => {
   return (
-    <footer className="py-10 px-6 border-t border-border">
-      <div className="max-w-6xl mx-auto text-center">
-        <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()}{" "}
-          <span className="text-gradient font-medium">VibeCoder</span>
-          {" "}— Building the future with code.
-        </p>
+    <footer className="border-t border-border bg-ide-statusbar">
+      <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+        <div className="flex items-center gap-4">
+          <span className="text-xs text-muted-foreground">find me in:</span>
+          <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Twitter className="w-4 h-4" />
+          </a>
+          <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Linkedin className="w-4 h-4" />
+          </a>
+        </div>
+        <a href="#" className="flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors">
+          @vibecoder <Github className="w-4 h-4" />
+        </a>
       </div>
     </footer>
   );
