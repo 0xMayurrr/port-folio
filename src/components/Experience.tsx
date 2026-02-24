@@ -1,12 +1,26 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Code, CodeHeader, CodeBlock } from "./ui/animated-code";
 
 const experiences = [
-  { year: "2024", title: "Blockchain Developer — Web3 Startup", description: "Led smart contract development and DeFi protocol architecture." },
-  { year: "2023", title: "ETHGlobal Hackathon — Winner", description: "Built an AI-powered DeFi aggregator in 48 hours." },
-  { year: "2023", title: "AI Research Intern — Tech Lab", description: "Developed NLP models for automated code review." },
-  { year: "2022", title: "Open Source Contributor", description: "Major contributions to Web3 tooling libraries." },
-  { year: "2022", title: "HackAI — Top 3 Finalist", description: "Created an ML-powered IoT monitoring system." },
+  {
+    year: "2025 — Present",
+    title: "Startup Product Development",
+    description:
+      "Actively building a real-world startup product, contributing to feature design, development, and refinement to deliver a usable and scalable solution."
+  },
+  {
+    year: "2025 — Present",
+    title: "Blockchain Systems Builder",
+    description:
+      "Developing decentralized applications and experimenting with smart contracts to understand how blockchain can solve real-world problems."
+  },
+  {
+    year: "2024 — Present",
+    title: "Self-Driven Tech Projects",
+    description:
+      "Creating practical applications across AI, IoT, and web development, primarily through hackathons and independent exploration."
+  }
 ];
 
 const Experience = () => {
@@ -22,45 +36,50 @@ const Experience = () => {
           transition={{ duration: 0.5 }}
         >
           <p className="text-comment text-xs mb-6">// Experience & achievements</p>
-          <div className="rounded-lg border border-border bg-card p-6">
-            <p className="text-sm mb-4">
-              <span className="text-keyword">const </span>
-              <span className="text-variable">experience</span>
-              <span className="text-foreground"> = [</span>
-            </p>
-            {experiences.map((exp, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -10 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: i * 0.08, duration: 0.4 }}
-                className="pl-6 mb-4"
-              >
-                <p className="text-sm">
-                  <span className="text-foreground">{"{ "}</span>
-                  <span className="text-function">year</span>
-                  <span className="text-foreground">: </span>
-                  <span className="text-string">"{exp.year}"</span>
-                  <span className="text-foreground">,</span>
-                </p>
-                <p className="text-sm pl-4">
-                  <span className="text-function">role</span>
-                  <span className="text-foreground">: </span>
-                  <span className="text-string">"{exp.title}"</span>
-                  <span className="text-foreground">,</span>
-                </p>
-                <p className="text-sm pl-4">
-                  <span className="text-function">desc</span>
-                  <span className="text-foreground">: </span>
-                  <span className="text-string">"{exp.description}"</span>
-                </p>
-                <p className="text-sm">
-                  <span className="text-foreground">{"}"}{i < experiences.length - 1 ? "," : ""}</span>
-                </p>
-              </motion.div>
-            ))}
-            <p className="text-sm text-foreground">]</p>
-          </div>
+          <Code>
+            <CodeHeader title="Experience.ts" />
+            <CodeBlock>
+              <p className="text-sm mb-4">
+                <span className="text-keyword">const </span>
+                <span className="text-variable">experience</span>
+                <span className="text-foreground"> = [</span>
+              </p>
+                {experiences.map((exp, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.15, duration: 0.5, type: "spring" }}
+                    whileHover={{ x: 10, backgroundColor: "hsl(var(--secondary) / 0.5)" }}
+                    className="pl-6 mb-4 py-2 rounded-md transition-colors cursor-default"
+                  >
+                    <p className="text-sm">
+                      <span className="text-foreground">{"{ "}</span>
+                      <span className="text-function">year</span>
+                      <span className="text-foreground">: </span>
+                      <span className="text-string">"{exp.year}"</span>
+                      <span className="text-foreground">,</span>
+                    </p>
+                    <p className="text-sm pl-4">
+                      <span className="text-function">role</span>
+                      <span className="text-foreground">: </span>
+                      <span className="text-string">"{exp.title}"</span>
+                      <span className="text-foreground">,</span>
+                    </p>
+                    <p className="text-sm pl-4">
+                      <span className="text-function">desc</span>
+                      <span className="text-foreground">: </span>
+                      <span className="text-string">"{exp.description}"</span>
+                    </p>
+                    <p className="text-sm">
+                      <span className="text-foreground">{"}"}{i < experiences.length - 1 ? "," : ""}</span>
+                    </p>
+                  </motion.div>
+                ))}
+                <p className="text-sm text-foreground">]</p>
+            </CodeBlock>
+          </Code>
         </motion.div>
       </div>
     </section>
