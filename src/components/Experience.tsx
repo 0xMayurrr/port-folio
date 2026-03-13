@@ -3,23 +3,10 @@ import { useRef } from "react";
 import { Code, CodeHeader, CodeBlock } from "./ui/animated-code";
 
 const experiences = [
-  {
-    year: "2025 — Present",
-    title: "Startup Product Development",
-    description:
-      "Actively building a real-world startup product, contributing to feature design, development, and refinement to deliver a usable and scalable solution."
-  },
-  {
-    year: "2025 — Present",
-    title: "Blockchain Systems Builder",
-    description:
-      "Developing decentralized applications and experimenting with smart contracts to understand how blockchain can solve real-world problems."
-  },
-  {
-    year: "2024 — Present",
-    title: "Self-Driven Tech Projects",
-    description:
-      "Creating practical applications across AI, IoT, and web development, primarily through hackathons and independent exploration."
+  { 
+    year: "2023 — Present",
+    title: "Web3 Contributor",
+    description: "Exploring and testing dApps, DeFi products, and smart contracts across EVM networks. Built personal projects and participated in hackathons."
   }
 ];
 
