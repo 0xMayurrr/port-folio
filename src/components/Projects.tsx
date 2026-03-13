@@ -1,4 +1,5 @@
 import { motion, useInView } from "framer-motion";
+import { url } from "inspector";
 import { useRef } from "react";
 
 const projects = [
@@ -9,10 +10,12 @@ const projects = [
     url: "https://on-trade.netlify.app/",
   },
   {
-    title: "DeID — Self-Sovereign Digital Identity Wallet",
-    description: "A self-sovereign digital identity wallet that allows users to store and share verifiable credentials via QR codes, enabling instant authentication without relying on a central authority.",
-    tags: ["React.js • Node.js • MongoDB • Cryptographic Signing • Ethereum / Web3 Integration"],
+    title: "Credora — Live permissioned blockchain platform",
+    description: "Built a permissioned blockchain platform for tamper-proof certificate issuance with AI fraud detection and Zero-Knowledge privacy.",
+    tags: ["Hyperledger Fabric • Node.js • React.js • TypeScript • MongoDB • Docker • Semaphore ZK • IPFS • Ethers.js • JWT"],
+    url: "https://credora.netlify.app/",
   },
+
   {
     title: "Campus Aid Buddy — AI-Based Student Help Platform ",
     description: "An AI-powered campus assistant that helps students access academic resources, campus services, announcements, and support through a unified intelligent platform.",
